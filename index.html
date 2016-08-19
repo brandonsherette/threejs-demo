@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Three JS Example</title>
+
+  <link rel="stylesheet" type="text/css" href="./vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+</head>
+
+<body>
+  <header class="container text-center">
+    <h1>Three JS Example</h1>
+  </header>
+
+  <div class="container" id="content-body">
+    <div class="diagram-component">
+      <!-- Control Panel -->
+      <section id="diagram-control-panel" class="col-md-4">
+        <h1>Control Panel</h1>
+        <form>
+          <div class="form-group">
+            <label for="select-shape">Shape</label>
+            <select class="select-shape form-control" id="select-shape">
+                <option value="cube">Cube</option>
+                <option value="sphere">Sphere</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="select-color">Color</label>
+            <select class="select-color form-control" id="select-color">
+                <option value="#538FC6">Blue</option>
+                <option value="#6ec653">Green</option>
+              </select>
+          </div>
+          <div class="text-center">
+            <button type="button" class="btn btn-primary" id="select-product">Select</button>
+          </div>
+        </form>
+
+        <!-- Confirm Modal -->
+        <section id="select-confirm-modal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal Content -->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Product Selection</h4>
+              </div>
+              <div class="modal-body">
+                <p id="select-confirm-text"></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+      <!-- Diagram -->
+      <section id="diagram-module" class="col-md-8"></section>
+    </div>
+  </div>
+
+  <!-- Vendor Scripts -->
+  <script src="./vendor/jquery/jquery.min.js"></script>
+  <script src="./vendor/bootstrap/bootstrap.min.js"></script>
+  <script src="./vendor/three/build/three.min.js"></script>
+  <script src="./vendor/three/controls/OrbitControls.js"></script>
+  <!-- Models-->
+  <script src="./app/diagram/diagram.model.js"></script>
+  <!-- Services -->
+  <script src="./app/diagram/diagram.service.js"></script>
+  <!-- Modules -->
+  <script src="./app/diagram/diagram.module.js"></script>
+  <script src="./app/diagram/diagram-control-panel.module.js"></script>
+  <!-- Components -->
+  <script src="./app/diagram/diagram.component.js"></script>
+  <!-- App -->
+  <script src="./app/app.js"></script>
+  <!-- Starting Script -->
+  <script src="./index.js"></script>
+</body>
+
+</html>

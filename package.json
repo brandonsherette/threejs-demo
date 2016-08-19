@@ -1,0 +1,11 @@
+{
+  "name": "threejs-example",
+  "version": "0.0.1",
+  "description": "Demonstration example for the JavaScript library, THREE.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}

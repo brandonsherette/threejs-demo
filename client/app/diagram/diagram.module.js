@@ -13,6 +13,8 @@ var DiagramModule = (function ($, THREE, service) {
   var _$el, _camera, _controls, _isAnimating, _mesh, _modelSubId, _scene;
   var EL_SELECTOR = '#diagram-module';
 
+  var _loader = new THREE.TextureLoader();
+
   // Return API
   return {
     /* properties */
@@ -84,14 +86,22 @@ var DiagramModule = (function ($, THREE, service) {
    * @chainable
    */
   function addGeometry(geometry) {
-    var material = new THREE.MeshBasicMaterial({
-      color: this.model.color,
-      wireframe: true
+    _loader.load(this.model.texture.url, (texture) => {
+      let material = new THREE.MeshBasicMaterial({
+        map: texture,
+        color: this.model.color.value
+      });
+
+      _mesh = new THREE.Mesh(geometry, material);
+      _scene.add(_mesh);
+
+      // render the diagram once finished the loading process
+      this.renderDiagram();
+    }, (xhr) => {
+      console.info('Loading Texture: ' + xhr.loaded / xhr.total * 100 + '% loaded');
+    }, (xhr) => {
+      console.error('Error Loading Texture');
     });
-
-    _mesh = new THREE.Mesh(geometry, material);
-
-    _scene.add(_mesh);
 
     return this;
   }
@@ -207,7 +217,6 @@ var DiagramModule = (function ($, THREE, service) {
       _scene.remove(_mesh);
       _mesh.geometry.dispose();
       _mesh.material.dispose();
-      //_mesh.texture.dispose();
       _mesh = null;
     }
 

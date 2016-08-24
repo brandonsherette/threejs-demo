@@ -10,7 +10,8 @@
  */
 DiagramModel = (function () {
   return function () {
-    this.color = '';
-    this.shape = '';
+    this.shape = {};
+    this.color = {};
+    this.texture = {};
   };
 } ());
